@@ -2,9 +2,9 @@
   Here all the brands in all stores
     <ul>
       <% @shoes.each() do |shoe| %>
-      <li><%= shoe.brand %></li>
+      <li><%= shoe.brand %> - <%= shoe.stores.first.name   %></li>
       <% end %>
     </ul>
     <% else %>
-      <h5>No brands entered!</h5>
+      <h5>No brands anywhere.</h5>
 <% end %>
