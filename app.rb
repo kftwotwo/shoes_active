@@ -44,9 +44,12 @@ end
 post('/shoes/new') do
   new_name = params['new-name']
   new_brand = params['new-brand']
-  new_year = params['year'].to_s
+  new_year = params['year']
   new_kind = params['new-kind']
+  @stores = Store.all
+  store = Store.find(params['store_id'].to_i)
   @shoe = Shoe.create({:name => new_name, :brand => new_brand, :year => new_year, :kind => new_kind})
+  @shoe.stores.push(store)
   if @shoe.save
     redirect '/shoes'
   else
