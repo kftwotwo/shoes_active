@@ -33,6 +33,7 @@ end
 get('/stores/:id') do
   @store = Store.find(params["id"].to_i)
   @stores = Store.all
+  @shoes = Shoe.all
   erb(:update_store)
 end
 
@@ -95,7 +96,6 @@ patch('/shoes/:id') do
   @shoe.stores.push(Store.find(params["store_id"]))
   redirect '/shoes'
 end
-
 
 delete('/shoes/:id') do
   Shoe.find(params['id'].to_i).destroy

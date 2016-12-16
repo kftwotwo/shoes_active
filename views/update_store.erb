@@ -16,4 +16,14 @@
   <input id="new-brand" type="text" name="new-new-brand" required>
 
   <button type="submit" class="btn">Update</button>
-</form>
+</form><br><br>
+
+<% if @shoes.any? %>
+  <ul>
+    <% @shoes.each() do |shoe| %>
+    <li><a href="/shoe/<%= shoe.id %>"><%= shoe.name %> - <%= shoe.brand %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+    <h4>There are no shoes at this store</h4>
+  <% end %>
