@@ -56,16 +56,16 @@ describe('Add, Assign, update', {:type => :feature}) do
     expect(page).to have_content('Something')
   end
 
-  # it "able to update a store" do
-  #   @store.save
-  #   @store2.save
-  #   visit('/shoes/new')
-  #   fill_in('new-name', :with => 'Air Flow 2.0')
-  #   fill_in('new-brand', :with => 'Nike')
-  #   fill_in('new-year', :with => '2001')
-  #   fill_in('new-kind', :with => 'Normal')
-  #   select("Nike Outlet", :from => 'store_id')
-  #   click_button('Enter')
-  #   expect(page).to have_content('Air Flow 2.0')
-  # end
+  it "able to update a store" do
+    visit('/stores/new')
+    fill_in('new-name', :with => 'Kevins Spot')
+    fill_in('new-brand', :with => 'Nike')
+    click_button('Enter')
+    visit('/stores')
+    click_link('Kevins Spot')
+    fill_in('new-new-name', :with => 'Something')
+    fill_in('new-new-brand', :with => 'Something')
+    click_button('Update')
+    expect(page).to have_content('Something')
+  end
 end
