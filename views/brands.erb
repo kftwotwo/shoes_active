@@ -1,5 +1,5 @@
 <% if @shoes.any?() %>
-  Here all the brands in all stores
+  <h3>Here all the brands in all stores</h3>
     <ul>
       <% @shoes.each() do |shoe| %>
       <li><%= shoe.brand %> - <%= shoe.stores.first.name   %></li>
