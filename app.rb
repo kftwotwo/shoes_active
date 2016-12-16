@@ -12,6 +12,7 @@ end
 
 get('/shoes') do
   @shoes = Shoe.all
+  @stores = Store.all
   erb(:shoes)
 end
 

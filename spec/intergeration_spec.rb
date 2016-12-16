@@ -4,7 +4,7 @@ require('pry')
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
-describe('view all stylists or one', {:type => :feature}) do
+describe('Add, Assign, update', {:type => :feature}) do
   before :each do
     @store = Store.new({:name => 'Nike Outlet', :brand => 'Nike'})
     @store2 = Store.new({:name => 'Walmart', :brand => 'Everything'})
@@ -24,6 +24,30 @@ describe('view all stylists or one', {:type => :feature}) do
   end
 
   it "able to assign a shoe to a store" do
+    @store.save
+    @store2.save
+    visit('/shoes/new')
+    fill_in('new-name', :with => 'Air Flow 2.0')
+    fill_in('new-brand', :with => 'Nike')
+    fill_in('new-year', :with => '2001')
+    fill_in('new-kind', :with => 'Normal')
+    select("Nike Outlet", :from => 'store_id')
+    click_button('Enter')
+    expect(page).to have_content('Air Flow 2.0')
+  end
+
+  it "able to update a shoe" do
+    visit('/shoes/new')
+    fill_in('new-name', :with => 'Air Flow 2.0')
+    fill_in('new-brand', :with => 'Nike')
+    fill_in('new-year', :with => '2001')
+    fill_in('new-kind', :with => 'Normal')
+    select("Nike Outlet", :from => 'store_id')
+    click_button('Enter')
+    expect(page).to have_content('Air Flow 2.0')
+  end
+
+  it "able to update a store" do
     @store.save
     @store2.save
     visit('/shoes/new')
