@@ -12,31 +12,30 @@
 <br>
 
 <h5>Update Shoe</h5>
-    <!-- update Recipe name -->
-    <form action="/shoes/<%= @shoes.id() %>" method="post" required>
-      <input name="_method" type="hidden" value="patch">
-      <label for="new-name">Update Name</label>
-      <input id="new-name" type="text" name="new-name" required>
+<form action="/shoes/<%= @shoes.id() %>" method="post" required>
+  <input name="_method" type="hidden" value="patch">
+  <label for="new-name">Update Name</label>
+  <input id="new-name" type="text" name="new-name" required>
 
-      <label for="new-brand">Update Brand</label>
-      <input id="new-brand" type="text" name="new-brand" required>
+  <label for="new-brand">Update Brand</label>
+  <input id="new-brand" type="text" name="new-brand" required>
 
-      <label for="new-year">Update Year</label>
-      <input id="new-year" type="text" name="new-year" required>
+  <label for="new-year">Update Year</label>
+  <input id="new-year" type="text" name="new-year" required>
 
-      <label for="new-kind">Update Kind</label>
-      <input id="new-kind" type="text" name="new-kind" required>
+  <label for="new-kind">Update Kind</label>
+  <input id="new-kind" type="text" name="new-kind" required>
 
-      <label>Select a Store</label><br>
+  <label>Select a Store</label><br>
 
-      <% if @allstores.any?() %>
-        <select name="store_id" class="browser-default" required>
-          <option value=""></option>
-          <% @allstores.each() do |store| %>
-            <option value="<%= store.id()%>"><%= store.name() %></option>
-          <% end %>
-        </select><br><br>
+  <% if @allstores.any?() %>
+    <select name="store_id" class="browser-default" required>
+      <option value=""></option>
+      <% @allstores.each() do |store| %>
+        <option value="<%= store.id()%>"><%= store.name() %></option>
       <% end %>
+    </select><br><br>
+  <% end %>
 
-      <button type="submit" class="btn">Update</button>
-    </form>
+  <button type="submit" class="btn">Update</button>
+</form>

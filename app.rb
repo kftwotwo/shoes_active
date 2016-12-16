@@ -30,6 +30,21 @@ get('/stores/new') do
   erb(:new_store)
 end
 
+get('/stores/:id') do
+  @store = Store.find(params["id"].to_i)
+  @stores = Store.all
+  erb(:update_store)
+end
+
+patch('/stores/:id') do
+  new_name = params["new-new-name"]
+  new_brand = params["new-new-brand"]
+  @stores = Store.find(params["id"].to_i)
+  @stores.update({:name => new_name, :brand => new_brand})
+  @stores = Store.all
+  redirect '/stores'
+end
+
 post('/stores/new') do
   new_name = params['new-name']
   new_brand = params['new-brand']
@@ -58,7 +73,7 @@ post('/shoes/new') do
 end
 
 get('/shoes/:id') do
-  @shoes = Shoe.find(params.fetch("id").to_i)
+  @shoes = Shoe.find(params["id"].to_i)
   @stores = @shoes.stores
   @allstores = Store.all
   erb(:update_shoe)
