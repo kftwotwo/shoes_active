@@ -22,6 +22,7 @@ end
 
 get('/shoes/new') do
   @shoes = Shoe.all
+  @stores = Store.all
   erb(:new_shoe)
 end
 
@@ -68,9 +69,9 @@ post('/shoes/new') do
   new_year = params['year']
   new_kind = params['new-kind']
   @stores = Store.all
-  store = Store.find(params['store_id'].to_i)
+  @stores = Store.find(params['store_id'].to_i)
   @shoe = Shoe.create({:name => new_name, :brand => new_brand, :year => new_year, :kind => new_kind})
-  @shoe.stores.push(store)
+  @shoe.stores.push(@stores)
   if @shoe.save
     redirect '/shoes'
   else

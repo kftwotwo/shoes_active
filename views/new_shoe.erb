@@ -14,11 +14,13 @@
   <input id="new-kind" type="text" name="new-kind" required>
 
   <% if @stores.any? %>
+  <p>Assign the shoe to a store!</p>
     <select name="store_id" class="browser-default">
       <option value=""></option>
       <% @stores.each() do |store| %>
         <option value="<%= store.id()%>"><%= store.name() %></option>
       <% end %>
     </select><br>
+  <% end %>
   <button type="submit">Enter</button>
 </form>
