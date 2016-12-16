@@ -102,3 +102,8 @@ delete('/shoes/:id') do
   Shoe.find(params['id'].to_i).destroy
   redirect '/shoes'
 end
+
+get('/brands') do
+  @shoes = Shoe.all
+  erb(:brands)
+end
