@@ -1,4 +1,4 @@
-<% if @shoes.any?() %>
+<% if @stores.any?() %>
   <h5>Here are all your shoes:</h5>
 
   <ul>
@@ -7,34 +7,36 @@
     <% end %>
   </ul>
 
-<% else %>
   <br>
   <h3>There seems their are not shoes any where.</h3>
-    <p>Enter the following to enter a new shoe</p>
-    <br><br>
+  <p>Enter the following to enter a new shoe</p>
+  <br><br>
   <form action="/shoes/new" method="post">
-    <label for="new-name">Name</label>
-    <input id="new-name" type="text" name="new-name" required>
+  <label for="new-name">Name</label>
+  <input id="new-name" type="text" name="new-name" required>
 
-    <label for="new-brand">Brand</label>
-    <input id="new-brand" type="text" name="new-brand" required>
+  <label for="new-brand">Brand</label>
+  <input id="new-brand" type="text" name="new-brand" required>
 
-    <label for="new-year">Year</label>
-    <input id="new-year" type="text" name="new-year" required>
+  <label for="new-year">Year</label>
+  <input id="new-year" type="text" name="new-year" required>
 
-    <label for="new-kind">Kind</label>
-    <input id="new-kind" type="text" name="new-kind" required>
+  <label for="new-kind">Kind</label>
+  <input id="new-kind" type="text" name="new-kind" required> -->
 
-    <% if @stores.any? %>
+  <% if @stores.any? %>
     <p>Assign the shoe to a store</p>
-      <select name="store_id" id='store_id' class="browser-default">
-        <option value=""></option>
-        <% @stores.each() do |store| %>
-          <option value="<%= store.id()%>"><%= store.name() %></option>
-        <% end %>
-      </select><br>
+    <select name="store_id" id='store_id' class="browser-default">
+    <option value=""></option>
+    <% @stores.each() do |store| %>
+      <option value="<%= store.id()%>"><%= store.name() %></option>
     <% end %>
-    <button type="submit" class="btn green">Enter</button>
-  </form>
-
+    </select><br>
+  <% end %>
+  <button type="submit" class="btn green">Enter</button>
+</form>
+<% else %>
+  <h3>No stores!</h3>
+  <p>Add a store!</p>
+  <a href="/stores/new"><button class="btn">New Store</button></a>
 <% end %>

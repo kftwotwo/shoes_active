@@ -1,3 +1,4 @@
+<% if @stores.any? %>
 <h3>Enter the following for a new shoe</h3>
 
 <form action="/shoes/new" method="post">
@@ -12,6 +13,9 @@
 
   <label for="new-kind">Kind</label>
   <input id="new-kind" type="text" name="new-kind" required>
+  <% else %>
+    <p>Add a store!</p>
+  <% end %>
 
   <% if @stores.any? %>
   <p>Assign the shoe to a store!</p>
