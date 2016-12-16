@@ -56,3 +56,22 @@ post('/shoes/new') do
     erb(:errors)
   end
 end
+
+get('/shoes/:id') do
+  @shoes = Shoe.find(params.fetch("id").to_i)
+  @stores = @shoes.stores
+  @allstores = Store.all
+  erb(:update_shoe)
+end
+
+patch('/shoes/:id') do
+  new_name = params["new-name"]
+  new_brand = params["new-brand"]
+  new_year = params["new-year"]
+  new_kind = params["new-kind"]
+  @shoe = Shoe.find(params["id"].to_i)
+  @shoe.update({:name => new_name, :brand => new_brand, :year => new_year, :kind => new_kind})
+  @shoe.stores.destroy_all
+  @shoe.stores.push(Store.find(params["store_id"]))
+  redirect '/shoes'
+end

@@ -13,13 +13,13 @@
   <label for="new-kind">Kind</label>
   <input id="new-kind" type="text" name="new-kind" required>
 
-  <% if @stores.any? %>
+  <!-- <% if @stores.any? %>
     <select name="store_id" class="browser-default">
       <option value=""></option>
       <% @stores.each() do |store| %>
         <option value="<%= store.id()%>"><%= store.name() %></option>
       <% end %>
     </select><br>
-  <% end %>
+  <% end %> -->
   <button type="submit">Enter</button>
 </form>
