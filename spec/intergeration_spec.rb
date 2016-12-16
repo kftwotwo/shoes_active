@@ -17,6 +17,11 @@ describe('view all stylists or one', {:type => :feature}) do
     visit('/shoes')
     expect(page).to have_content('Air Flow 2.0')
   end
+  it('allows a you to see the shoe') do
+    @store.save()
+    visit('/stores')
+    expect(page).to have_content('Nike Outlet')
+  end
 end
 
 # describe('add a client to a stylist', {:type => :feature}) do
