@@ -1,0 +1,24 @@
+<% if @stores.any?() %>
+  <h5>Here are your recipes:</h5>
+
+  <ul>
+    <% @stores.each() do |store| %>
+      <li><a href="/stores/<%= shoe.id()%>"><%= store.name() %></a></li>
+    <% end %>
+  </ul>
+
+<% else %>
+  <br>
+  <h3>There seems their are no stores entered.</h3>
+    <p>Enter the following to enter a new shoe</p>
+    <br><br>
+  <form action="/stores/new" method="post">
+    <label for="new-name">Name</label>
+    <input id="new-name" type="text" name="new-name" required>
+
+    <label for="new-brand">Brand</label>
+    <input id="new-brand" type="text" name="new-brand" required>
+    <button type="submit">Enter</button>
+  </form>
+
+<% end %>

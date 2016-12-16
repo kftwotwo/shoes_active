@@ -2,9 +2,25 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <title>Shoes</title>
   </head>
   <body>
-    <%= yield %>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo">Shoe Tacker</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/stores">Stores</a></li>
+            <li><a href="/shoes">Shoes</a></li>
+            <li><a href="/shoes/new">New Shoe</a></li>
+            <li><a href="/stores/new">New Store</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
