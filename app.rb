@@ -45,6 +45,11 @@ patch('/stores/:id') do
   redirect '/stores'
 end
 
+delete('/stores/:id') do
+  Store.find(params['id'].to_i).destroy
+  redirect '/stores'
+end
+
 post('/stores/new') do
   new_name = params['new-name']
   new_brand = params['new-brand']
