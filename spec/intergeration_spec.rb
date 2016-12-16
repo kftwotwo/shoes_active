@@ -68,4 +68,17 @@ describe('Add, Assign, update', {:type => :feature}) do
     click_button('Update')
     expect(page).to have_content('Something')
   end
+
+  it "able to Delete a store" do
+    visit('/stores/new')
+    fill_in('new-name', :with => 'Kevins Spot')
+    fill_in('new-brand', :with => 'Nike')
+    click_button('Enter')
+    visit('/stores')
+    click_link('Kevins Spot')
+    fill_in('new-new-name', :with => 'Something')
+    fill_in('new-new-brand', :with => 'Something')
+    click_button('Delete')
+    expect(page).to have_content()
+  end
 end
