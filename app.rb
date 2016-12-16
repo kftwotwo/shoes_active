@@ -29,3 +29,14 @@ get('/stores/new') do
   @stores = Store.all
   erb(:new_store)
 end
+
+post('/stores/new') do
+  new_name = params['new-name']
+  new_brand = params['new-brand']
+  @store = Store.create({:name => new_name, :brand => new_brand})
+  if @store.save
+    redirect '/stores'
+  else
+    erb(:errors)
+  end
+end
