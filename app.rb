@@ -40,3 +40,16 @@ post('/stores/new') do
     erb(:errors)
   end
 end
+
+post('/shoes/new') do
+  new_name = params['new-name']
+  new_brand = params['new-brand']
+  new_year = params['year'].to_s
+  new_kind = params['new-kind']
+  @shoe = Shoe.create({:name => new_name, :brand => new_brand, :year => new_year, :kind => new_kind})
+  if @shoe.save
+    redirect '/shoes'
+  else
+    erb(:errors)
+  end
+end
