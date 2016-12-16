@@ -81,4 +81,24 @@ describe('Add, Assign, update', {:type => :feature}) do
     click_button('Delete')
     expect(page).to have_content()
   end
+
+  it "able to delete a shoe" do
+    @store.save
+    visit('/shoes/new')
+    fill_in('new-name', :with => 'Air Flow 2.0')
+    fill_in('new-brand', :with => 'Nike')
+    fill_in('new-year', :with => '2001')
+    fill_in('new-kind', :with => 'Normal')
+    select("Nike Outlet", :from => 'store_id')
+    click_button('Enter')
+    visit('/shoes')
+    click_link('Air Flow 2.0')
+    fill_in('new-name', :with => 'Something')
+    fill_in('new-brand', :with => 'Something')
+    fill_in('new-year', :with => '2016')
+    fill_in('new-kind', :with => 'Something')
+    select("Nike Outlet", :from => 'store_id')
+    click_button('Delete')
+    expect(page).to have_content()
+  end
 end
