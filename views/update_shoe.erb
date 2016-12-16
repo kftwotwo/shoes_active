@@ -1,4 +1,9 @@
-<form action="/shoes/<%= @shoes.id %>" method="post" class="right delete-form">
+<h3>Name: <%= @shoes.name %></h3>
+<h3>Brand: <%= @shoes.brand %></h3>
+<h3>Year: <%= @shoes.year %></h3>
+<h3>Kind: <%= @shoes.kind %></h3>
+<br><br>
+<form action="/shoes/<%= @shoes.id %>" method="post" class="left delete-form">
  <input name="_method" type="hidden" value="delete">
  <button type="submit" class="btn red right">Delete</button>
 </form>
