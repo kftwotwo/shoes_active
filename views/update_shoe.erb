@@ -2,6 +2,7 @@
 <h3>Brand: <%= @shoes.brand %></h3>
 <h3>Year: <%= @shoes.year %></h3>
 <h3>Kind: <%= @shoes.kind %></h3>
+<h3>Store: <%= @stores.first.name %></h3>
 <br><br>
 <form action="/shoes/<%= @shoes.id %>" method="post" class="left delete-form">
  <input name="_method" type="hidden" value="delete">
