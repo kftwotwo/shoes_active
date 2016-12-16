@@ -19,3 +19,13 @@ get('/stores') do
   @stores = Store.all
   erb(:stores)
 end
+
+get('/shoes/new') do
+  @shoes = Shoe.all
+  erb(:new_shoe)
+end
+
+get('/stores/new') do
+  @stores = Store.all
+  erb(:new_store)
+end
