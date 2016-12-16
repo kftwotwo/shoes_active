@@ -37,6 +37,7 @@ describe('Add, Assign, update', {:type => :feature}) do
   end
 
   it "able to update a shoe" do
+    @store.save
     visit('/shoes/new')
     fill_in('new-name', :with => 'Air Flow 2.0')
     fill_in('new-brand', :with => 'Nike')
@@ -44,19 +45,27 @@ describe('Add, Assign, update', {:type => :feature}) do
     fill_in('new-kind', :with => 'Normal')
     select("Nike Outlet", :from => 'store_id')
     click_button('Enter')
-    expect(page).to have_content('Air Flow 2.0')
+    visit('/shoes')
+    click_link('Air Flow 2.0')
+    fill_in('new-name', :with => 'Something')
+    fill_in('new-brand', :with => 'Something')
+    fill_in('new-year', :with => '2016')
+    fill_in('new-kind', :with => 'Something')
+    select("Nike Outlet", :from => 'store_id')
+    click_button('Update')
+    expect(page).to have_content('Something')
   end
 
-  it "able to update a store" do
-    @store.save
-    @store2.save
-    visit('/shoes/new')
-    fill_in('new-name', :with => 'Air Flow 2.0')
-    fill_in('new-brand', :with => 'Nike')
-    fill_in('new-year', :with => '2001')
-    fill_in('new-kind', :with => 'Normal')
-    select("Nike Outlet", :from => 'store_id')
-    click_button('Enter')
-    expect(page).to have_content('Air Flow 2.0')
-  end
+  # it "able to update a store" do
+  #   @store.save
+  #   @store2.save
+  #   visit('/shoes/new')
+  #   fill_in('new-name', :with => 'Air Flow 2.0')
+  #   fill_in('new-brand', :with => 'Nike')
+  #   fill_in('new-year', :with => '2001')
+  #   fill_in('new-kind', :with => 'Normal')
+  #   select("Nike Outlet", :from => 'store_id')
+  #   click_button('Enter')
+  #   expect(page).to have_content('Air Flow 2.0')
+  # end
 end
