@@ -21,7 +21,7 @@
 <% if @shoes.any? %>
   <ul>
     <% @shoes.each() do |shoe| %>
-    <li><a href="/shoe/<%= shoe.id %>"><%= shoe.name %> - <%= shoe.brand %></a></li>
+    <li><a href="/shoes/<%= shoe.id %>"><%= shoe.name %> - <%= shoe.brand %></a></li>
     <% end %>
   </ul>
   <% else %>
