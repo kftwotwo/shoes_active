@@ -40,8 +40,8 @@ get('/stores/:id') do
 end
 
 patch('/stores/:id') do
-  new_name = params["new-new-name"].titlecase()
-  new_brand = params["new-new-brand"].titlecase()
+  new_name = params["new-new-name"]
+  new_brand = params["new-new-brand"]
   @stores = Store.find(params["id"].to_i)
   @stores.update({:name => new_name, :brand => new_brand})
   @stores = Store.all
@@ -54,8 +54,8 @@ delete('/stores/:id') do
 end
 
 post('/stores/new') do
-  new_name = params['new-name'].titlecase()
-  new_brand = params['new-brand'].titlecase()
+  new_name = params['new-name']
+  new_brand = params['new-brand']
   @store = Store.create({:name => new_name, :brand => new_brand})
   if @store.save
     redirect '/stores'
@@ -65,10 +65,10 @@ post('/stores/new') do
 end
 
 post('/shoes/new') do
-  new_name = params['new-name'].titlecase()
-  new_brand = params['new-brand'].titlecase()
+  new_name = params['new-name']
+  new_brand = params['new-brand']
   new_year = params['year']
-  new_kind = params['new-kind'].titlecase()
+  new_kind = params['new-kind']
   @stores = Store.all
   @stores = Store.find(params['store_id'].to_i)
   @shoe = Shoe.create({:name => new_name, :brand => new_brand, :year => new_year, :kind => new_kind})
@@ -88,10 +88,10 @@ get('/shoes/:id') do
 end
 
 patch('/shoes/:id') do
-  new_name = params["new-name"].titlecase()
-  new_brand = params["new-brand"].titlecase()
+  new_name = params["new-name"]
+  new_brand = params["new-brand"]
   new_year = params["new-year"]
-  new_kind = params["new-kind"].titlecase()
+  new_kind = params["new-kind"]
   @shoe = Shoe.find(params["id"].to_i)
   @shoe.update({:name => new_name, :brand => new_brand, :year => new_year, :kind => new_kind})
   @shoe.stores.destroy_all
